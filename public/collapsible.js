@@ -1,19 +1,4 @@
-import PopUP from "./popup.js";
-
-// var coll = document.getElementsByClassName("collapsible");
-// var i;
-
-// for (i = 0; i < coll.length; i++) {
-//   coll[i].addEventListener("click", function() {
-//     this.classList.toggle("active");
-//     var content = this.nextElementSibling;
-//     if (content.style.display === "block") {
-//       content.style.display = "none";
-//     } else {
-//       content.style.display = "block";
-//     }
-//   });
-// }
+const DEFAULT_OVERLAY_TEXT = "[you should never see this]";
 
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -30,13 +15,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-// function myPopUP(err_msg) {
-//   var popup = document.getElementById("myPopup");
-//   popup.popuptext = err_msg;
-//   popup.classList.toggle("show");
-// }
-
-
 function handleAddCCDebt(event) {
   event.preventDefault()
 
@@ -48,7 +26,7 @@ function handleAddCCDebt(event) {
   if (min_mo_pay > 0.05*balance) {
     var err_msg = "Your monthly payment seems oddly high. Did you miss a payment recently?";
     console.log(err_msg);
-    new PopUP(err_msg, 'orange')
+    overlayOn(err_msg);
     return;
   }
 
@@ -67,3 +45,14 @@ function handleAddCCDebt(event) {
 }
 
 document.querySelector("#addCCButton").addEventListener("click", handleAddCCDebt);
+
+function overlayOn(text_msg) {
+  document.getElementById("overlaytext").textContent = text_msg;
+  document.getElementById("overlay").style.display = "block";
+  document.querySelector("#killPopup").addEventListener("click", overlayOff);
+}
+
+function overlayOff() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("overlaytext").textContent = DEFAULT_OVERLAY_TEXT;
+}
