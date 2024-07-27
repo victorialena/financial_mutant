@@ -25,9 +25,17 @@ function handleAddCCDebt(event) {
   
   if (min_mo_pay > 0.05*balance) {
     var err_msg = "Your monthly payment seems oddly high. Did you miss a payment recently?";
-    console.log(err_msg);
+    console.log("popup: "+err_msg);
     overlayOn(err_msg);
     return;
+  }
+
+  var interest_rate = document.getElementById('cellTwo').value;
+
+  if (interest_rate > 50) {
+    var err_msg = "Bro... You took out a Payday Loan?";
+    console.log("popup: "+err_msg);
+    overlayOn(err_msg);
   }
 
   var row = table.insertRow(1);
@@ -37,7 +45,7 @@ function handleAddCCDebt(event) {
   var cell4 = row.insertCell(3);
 
   cell1.textContent = document.getElementById('cellOne').value;
-  cell2.innerHTML = document.getElementById('cellTwo').value;
+  cell2.innerHTML = interest_rate;
   cell3.innerHTML = balance;
   cell4.innerHTML = min_mo_pay;
 

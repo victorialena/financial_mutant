@@ -32,15 +32,22 @@
       </span>
     </div>
 
+
+    <!-- 
+      I. Liabilities 
+      This section complies all the debts someone might have, e.g., credit cards, car loans, payday loans and personal loans.
+    -->
     <button type="button" class="collapsible">Liabilities</button>
     <div class="content">
-      <p>Please add each of your credit cards one by one... Make sure you have all relevant information on hand, e.g., interest rate, current balance, etc... </p>
+      <p>Please add each of your credit lines one by one. This includes </p>
+      <ul> <li >credit cards,</li> <li> car loans,</li> <li>payday loans, and</li> <li> personal loans.</li></ul>
+      <p>Make sure you have all relevant information on hand, e.g., interest rate, current balance, etc... </p>
       
 
       <!-- https://stackoverflow.com/questions/53380689/how-to-add-new-row-in-table-from-user-input-in-html -->
       <table id="ccDebtTable">
         <tr>
-          <th>Card Id</th>
+          <th>Nick Name</th>
           <th>Interest Rate [%]</th>
           <th>Balance [$]</th>
           <th>Min Monthly Payment [$]</th>
@@ -53,7 +60,7 @@
       <input type='number' step='0.01' id='cellTwo' required>
       <input type='number' step='0.01' id='cellThree' required>
       <input type='number' step='0.01' id='cellFour' />
-      <button type="submit" id="addCCButton">Add CC</button>
+      <button type="submit" id="addCCButton">Add Debt</button>
       </form>
     </div>
 

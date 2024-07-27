@@ -50,7 +50,7 @@ textarea {
   border: 2px solid black;
 }
 
-p, form {
+p, form, ul {
   margin-left: 5rem;
   margin-right: 5rem;
 }
