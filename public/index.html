@@ -19,16 +19,17 @@
 
     </header>
     <p> Hi there, I am V. I'm gonna ask you some questions and recommend a course of action to help you manage your debt. <br>
-      Remember to be as honest as possible, your information is not being stored, and this is entirely anonymous. Only you and I can see this. And I am a machine.
+        Remember to be as honest as possible, your information is not being stored, and this is entirely anonymous. Only you and I can see this. And I am a machine.
     </p>
     <p> Let's start with the hardest part. Liabilities… This means your debts.
     </p>
 
+    <!-- https://www.w3schools.com/howto/howto_css_overlay.asp -->
     <div id="overlay">
-      <div id="overlaycontent">
-        <p id="overlaytext"> [you should never see this] </p>
+      <span id="overlaycontent">
         <button class="delete" id="killPopup"><img src="icons/delete.svg" alt="Delete"></button>
-      </div>
+        <p id="overlaytext"> [you should never see this] </p>
+      </span>
     </div>
 
     <button type="button" class="collapsible">Liabilities</button>
@@ -37,7 +38,6 @@
       
 
       <!-- https://stackoverflow.com/questions/53380689/how-to-add-new-row-in-table-from-user-input-in-html -->
-
       <table id="ccDebtTable">
         <tr>
           <th>Card Id</th>
