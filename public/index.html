@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Task Board | Assignment 2</title>
+
+    <!-- This line provides automatic page and style reloading when files change -->
+    <script type="module" src="/lib/client/updater.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="collapsible.css">
+    <script type="module" src="index.js"></script>
+    <script type="module" src="collapsible.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Financial Mutant</h1>
+
+      <!-- <form id="addCard">
+        <input type="text" name="title" id="cardTitle" placeholder="Title" required>
+        <input type="text" name="color" id="cardColor" placeholder="Color">
+        <button type="submit" id="addButton">Add</button>
+      </form> -->
+    </header>
+    <p> Hi there, I am V. I'm gonna ask you some questions and recommend a course of action to help you manage your debt. <br>
+      Remember to be as honest as possible, your information is not being stored, and this is entirely anonymous. Only you and I can see this. And I am a machine.
+    </p>
+    <p> Let's start with the hardest part. Liabilities… This means your debts.
+    </p>
+
+    <button type="button" class="collapsible">Liabilities</button>
+    <div class="content">
+      <p>Please add each of your credit cards one by one... Make sure you have all relevant information on hand, e.g., interest rate, current balance, etc... </p>
+      
+
+      <!-- https://stackoverflow.com/questions/53380689/how-to-add-new-row-in-table-from-user-input-in-html -->
+
+      <div class="popup">
+        <span class="popuptext" id="ccPopup"></span>
+      </div>
+
+      <table id="ccDebtTable">
+        <tr>
+          <th>Card Id</th>
+          <th>Interest Rate [%]</th>
+          <th>Balance [$]</th>
+          <th>Min Monthly Payment [$]</th>
+        </tr>
+      </table>
+      <br>
+
+      <form id="addCCDebt">
+      <input type='text' id='cellOne' required>
+      <input type='number' step='0.01' id='cellTwo' required>
+      <input type='number' step='0.01' id='cellThree' required>
+      <input type='number' step='0.01' id='cellFour' />
+      <button type="submit" id="addCCButton">Add CC</button>
+      </form>
+    </div>
+
+    <!-- <main id="board">
+      <section class="section" id="todo">
+        <h2 class="sectionTitle">To Do</h2>
+      </section>
+
+      <section class="section" id="doing">
+        <h2 class="sectionTitle">Doing</h2>
+      </section>
+
+      <section class="section" id="done">
+        <h2 class="sectionTitle">Done</h2>
+      </section>
+    </main> -->
+
+    <!-- Template card to be cloned in JavaScript -->
+    <!-- <article class="template card", id="template">
+      <h3 class="title">[TEMPLATE]</h3>
+      <p class="description">You should never see this text.</p>
+      <textarea class="editDescription hidden"></textarea>
+      <div class="buttons">
+        <button class="edit"><img src="icons/edit.svg" alt="Edit"></button>
+        <button class="startMove"><img src="icons/move.svg" alt="Move"></button>
+        <button class="delete"><img src="icons/delete.svg" alt="Delete"></button>
+      </div>
+    </article> -->
+
+     <!-- Template card to be cloned in JavaScript -->
+     <!-- https://www.w3schools.com/howto/howto_css_overlay.asp -->
+     <article class="template", id="templatepopup">
+      <h3 class="title">[You should never see this text]</h3>
+      <div class="buttons">
+        <button class="delete"><img src="icons/delete.svg" alt="Delete"></button>
+      </div>
+    </article>
+
+  </body>
+</html>
