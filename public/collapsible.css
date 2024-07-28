@@ -91,3 +91,12 @@
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
 }
+
+
+input[type=numberif], input[type=textif] {
+  visibility:hidden;
+}
+
+input[type=checkbox]:checked + input[type=numberif], input[type=checkbox]:checked + input[type=textif] {
+  visibility:visible;
+}

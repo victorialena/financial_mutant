@@ -56,12 +56,79 @@
       <br>
 
       <form id="addCCDebt">
-      <input type='text' id='cellOne' required>
-      <input type='number' step='0.01' id='cellTwo' required>
-      <input type='number' step='0.01' id='cellThree' required>
-      <input type='number' step='0.01' id='cellFour' />
-      <button type="submit" id="addCCButton">Add Debt</button>
+        <input type='text' id='cellOne' required>
+        <input type='number' step='0.01' id='cellTwo' required>
+        <input type='number' step='0.01' id='cellThree' required>
+        <input type='number' step='0.01' id='cellFour' />
+        <button type="submit" id="addCCButton">Add Debt</button>
       </form>
+
+      <div style="width: 100%; height: 30px;"></div>
+
+    </div>
+
+
+    <!-- 
+      II. Assets 
+    -->
+    <button type="button" class="collapsible">Assets</button>
+    <div class="content">
+        <form id="logAssets">
+          <label>Checking Account Balance:</label>
+          <input type='number' step='0.01' id="checking"><br><br>
+
+          <label>Savings Account Balance:</label>
+          <input type='number' step='0.01' id="savings"><br><br>
+
+          <label>I save for me retirement (e.g., 401k, RothIRA) </label>
+          <input type="checkbox" id="401k" />
+          <input type='numberif' step='0.01' id="401k_bal"><br><br>
+
+          <label>I invest / I have a Brokerage Account (e.g., Betterment, Robinhood) </label>
+          <input type="checkbox" id="brokerage" />
+          <input type='numberif' step='0.01' id="brokerage_bal"><br><br>
+
+          <label>I own a home! [#adulting] </label>
+          <input type="checkbox" id="home" />
+          <input type='numberif' step='0.01' id="home_bal" placeholder="Outstanding balance"><br><br>
+          
+          <button type="submit" id="saveAssets">Save</button>
+        </form>
+
+
+      <div style="width: 100%; height: 30px;"></div>
+
+    </div>
+
+    <!-- TODO: This save button should trigger a networth pop up -->
+
+     <!-- 
+      III. Cashflow 
+    -->
+    <button type="button" class="collapsible">Cashflow</button>
+    <div class="content">
+      <span>
+        <table id="budget">
+          <tr>
+            <th>Rent</th><td><input type='number' id='groceries'></td>
+          </tr>
+          <tr>
+            <th>Groceries</th><td><input type='number' value=300 id='groceries'></td>
+          </tr>
+          <tr>
+            <th>Health Insurance</th><td><input type='number' id='heath'></td>
+          </tr>
+          <tr>
+            <th>Essentials</th><td><input type='number' value=100 id='essentials'></td>
+          </tr>
+        </table>
+
+        <div id="piechart">
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript" src="circle_chart.js"></script>
+        </div>
+      </span>
+
     </div>
 
     <!-- <main id="board">
