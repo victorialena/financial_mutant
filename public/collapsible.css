@@ -58,7 +58,7 @@
   clear: both;
 }
 
-#ccDebtTable, td, th {
+#ccDebtTable, #budget, td, th {
   margin-left: 5rem;
   border: 1px solid black;
   border-collapse: collapse;
@@ -99,4 +99,33 @@ input[type=numberif], input[type=textif] {
 
 input[type=checkbox]:checked + input[type=numberif], input[type=checkbox]:checked + input[type=textif] {
   visibility:visible;
+}
+
+/* #budgetwrapper {
+  border: 1px solid blue;
+  display: flex; 
+} */
+
+#budgetwrapper {
+  margin-left: 5rem;
+  max-width:1600px;
+  /* border: 1px solid blue; */
+  display: flex; 
+  flex-direction: row;
+  align-items:center; 
+}
+
+#budget{
+  /* width: 290px; */
+  margin: 5px;
+  float:left;
+}
+
+#piechart{
+  margin: 5px;
+  float: right;
+}
+
+input { 
+  text-align: center; 
 }

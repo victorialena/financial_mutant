@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="collapsible.css">
     <script type="module" src="index.js"></script>
     <script type="module" src="collapsible.js"></script>
+    <script type="module" src="cashflow.js"></script>
+    <script type="module" src="circle_chart.js"></script>
   </head>
   <body>
     <header>
@@ -73,27 +75,28 @@
     -->
     <button type="button" class="collapsible">Assets</button>
     <div class="content">
-        <form id="logAssets">
-          <label>Checking Account Balance:</label>
-          <input type='number' step='0.01' id="checking"><br><br>
 
-          <label>Savings Account Balance:</label>
-          <input type='number' step='0.01' id="savings"><br><br>
+      <form id="logAssets">
+        <label>Checking Account Balance:</label>
+        <input type='number' step='0.01' id="checking"><br><br>
 
-          <label>I save for me retirement (e.g., 401k, RothIRA) </label>
-          <input type="checkbox" id="401k" />
-          <input type='numberif' step='0.01' id="401k_bal"><br><br>
+        <label>Savings Account Balance:</label>
+        <input type='number' step='0.01' id="savings"><br><br>
 
-          <label>I invest / I have a Brokerage Account (e.g., Betterment, Robinhood) </label>
-          <input type="checkbox" id="brokerage" />
-          <input type='numberif' step='0.01' id="brokerage_bal"><br><br>
+        <label>I save for me retirement (e.g., 401k, RothIRA) </label>
+        <input type="checkbox" id="401k" />
+        <input type='numberif' step='0.01' id="401k_bal"><br><br>
 
-          <label>I own a home! [#adulting] </label>
-          <input type="checkbox" id="home" />
-          <input type='numberif' step='0.01' id="home_bal" placeholder="Outstanding balance"><br><br>
-          
-          <button type="submit" id="saveAssets">Save</button>
-        </form>
+        <label>I invest / I have a Brokerage Account (e.g., Betterment, Robinhood) </label>
+        <input type="checkbox" id="brokerage" />
+        <input type='numberif' step='0.01' id="brokerage_bal"><br><br>
+
+        <label>I own a home! [#adulting] </label>
+        <input type="checkbox" id="home" />
+        <input type='numberif' step='0.01' id="home_bal" placeholder="Outstanding balance"><br><br>
+        
+        <button type="submit" id="saveAssets">Save</button>
+      </form>
 
 
       <div style="width: 100%; height: 30px;"></div>
@@ -107,27 +110,77 @@
     -->
     <button type="button" class="collapsible">Cashflow</button>
     <div class="content">
-      <span>
+      
+      <div style="width: 100%; height: 20px;"></div>
+
+      <form id="income_form">
+        <label>Household Income:</label>
+        <select name="income_flag" id="income_flag">
+          <option value="yearly">yearly</option>
+          <option value="biweekly">bi-weekly paycheck</option>
+          <option value="hourly">hourly</option>
+        </select>
+        <input type='number' step='0.01' value=0 id="income_val"><br><br>
+
+        <!-- <label>Your montly income amounts to $<span id="income"></span></label> -->
+        <!-- <label>Your montly income amounts to $<script type="text/javascript">document.write(income)</script></label> -->
+        <p id="incomeprompt"> Your montly income amounts to $0!</p>
+      </form>
+
+      <div id="budgetwrapper"> 
+
         <table id="budget">
           <tr>
-            <th>Rent</th><td><input type='number' id='groceries'></td>
+            <th rowspan="6">Housing</th>
+            <td>Rent / Mortage</td><td><input type='number' id='rent'></td>
           </tr>
           <tr>
-            <th>Groceries</th><td><input type='number' value=300 id='groceries'></td>
+            <td>Internet / WiFi</td><td><input type='number' id='internet'></td>
           </tr>
           <tr>
-            <th>Health Insurance</th><td><input type='number' id='heath'></td>
+            <td>Utilities</td><td><input type='number' id='utilities'></td>
           </tr>
           <tr>
-            <th>Essentials</th><td><input type='number' value=100 id='essentials'></td>
+            <td>HOA</td><td><input type='number' value=0 id='hoa'></td>
+          </tr>
+          <tr>
+            <td>Property Taxes [$/y]</td><td><input type='number' value=0 id='property_taxes'></td>
+          </tr>
+          <tr>
+            <td>Home / Renters Insurance</td><td><input type='number'id='home_insurance'></td>
+          </tr>
+          <tr>
+            <th rowspan="3">Living Expenses</th>
+            <td>Groceries</td><td><input type='number' value=300 id='groceries'></td>
+          </tr>
+          <tr>
+            <td>Essentials</td><td><input type='number' value=100 id='essentials'></td>
+          </tr>
+          <tr>
+            <td>Health Insurance</td><td><input type='number' id='heath_insurance'></td>
+          </tr>
+          <tr>
+            <th rowspan="2">Car</th>
+            <td>Gas</td><td><input type='number' id='gas'></td>
+          </tr>
+          <tr>
+            <td>Car Insurance</td><td><input type='number' id='car_insurance'></td>
+          </tr>
+          <tr>
+            <td colspan="2">Remaining</td><td><p id="budget_remainder"> $0 </td>
           </tr>
         </table>
 
-        <div id="piechart">
+        <button id="updateBudget"><img src="icons/update.svg" alt="update"></button>
+
+        <div id="piechart" style="float: right;">
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-          <script type="text/javascript" src="circle_chart.js"></script>
+          <!-- <script type="text/javascript" src="circle_chart.js"></script> -->
+          <script type="text/javascript" src="cashflow.js"></script>
+          <!-- <script> google.charts.setOnLoadCallback(drawChart); </script> -->
         </div>
-      </span>
+
+      </div>
 
     </div>
 

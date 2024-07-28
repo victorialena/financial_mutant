@@ -49,6 +49,7 @@ function handleAddCCDebt(event) {
   cell3.innerHTML = balance;
   cell4.innerHTML = min_mo_pay;
 
+  min_mo_debt = min_mo_debt + parseFloat(min_mo_pay);
   document.getElementById('addCCDebt').reset();
 }
 
