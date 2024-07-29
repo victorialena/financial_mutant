@@ -29,7 +29,8 @@
   padding: 0 0px;
   background-color: white;
   max-height: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: scroll;
   transition: max-height 0.2s ease-out;
 }
 
