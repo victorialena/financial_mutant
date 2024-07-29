@@ -1,7 +1,6 @@
 const DEFAULT_OVERLAY_TEXT = "[you should never see this]";
 
 var coll = document.getElementsByClassName("collapsible");
-// var i;
 
 for (var i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
@@ -10,7 +9,14 @@ for (var i = 0; i < coll.length; i++) {
     if (content.style.maxHeight){
       content.style.maxHeight = null;
     } else {
-      content.style.maxHeight =  content.scrollHeight + "50px"; // "100%" 
+      // close all collapsible
+      var col_content = document.getElementsByClassName("content");
+      for (var j = 0; j < col_content.length; j++) {
+        col_content[j].style.maxHeight = null;
+      }
+
+      // open this one
+      content.style.maxHeight =  content.scrollHeight + "50px"; // "100%"
     }
   });
 }
