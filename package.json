@@ -1,7 +1,7 @@
 {
-  "name": "@cs193x/assign2",
-  "version": "2023.spr",
-  "description": "CS193X Assignment 2",
+  "name": "financial_mutant/base",
+  "version": "v0",
+  "description": "Financial Mutant",
   "license": "UNLICENSED",
   "private": true,
   "type": "module",

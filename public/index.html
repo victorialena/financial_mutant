@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Task Board | Assignment 2</title>
+    <title>Financial Mutant | Own Your Debt</title>
 
     <!-- This line provides automatic page and style reloading when files change -->
     <script type="module" src="/lib/client/updater.js"></script>
@@ -16,11 +16,11 @@
     <script type="module" src="circle_chart.js"></script>
   </head>
   <body>
+    <form onkeypress="return event.keyCode != 13"></form>
     <header>
       <h1>Financial Mutant</h1>
-      <form onkeypress="return event.keyCode != 13"></form>
-
     </header>
+
     <p> Hi there, I am V. I'm gonna ask you some questions and recommend a course of action to help you manage your debt. <br>
         Remember to be as honest as possible, your information is not being stored, and this is entirely anonymous. Only you and I can see this. And I am a machine.
     </p>
@@ -43,7 +43,7 @@
     <button type="button" class="collapsible">Liabilities</button>
     <div class="content" id="liabilities_collapsible">
       <p>Please add each of your credit lines one by one. This includes </p>
-      <ul> <li >credit cards,</li> <li> car loans,</li> <li>payday loans, and</li> <li> personal loans.</li></ul>
+      <ul> <li >credit cards,</li> <li> car loans,</li> <li>payday loans, and</li> <li> personal loans.</li> <li> NOT your mortage. Your home is an assest you badass!</li></ul>
       <p>Make sure you have all relevant information on hand, e.g., interest rate, current balance, etc... </p>
       
 
@@ -86,7 +86,7 @@
         <label>Savings Account Balance:</label>
         <input type='number' step='0.01' id="savings"><br><br>
 
-        <label>I save for me retirement (e.g., 401k, RothIRA) </label>
+        <label>I save for my retirement (e.g., 401k, RothIRA) </label>
         <input type="checkbox" id="401k" />
         <input type='numberif' step='0.01' id="401k_bal"><br><br>
 
@@ -94,9 +94,9 @@
         <input type="checkbox" id="brokerage" />
         <input type='numberif' step='0.01' id="brokerage_bal"><br><br>
 
-        <label>I own a home! [#adulting] </label>
+        <!-- <label>I own a home! [#adulting] </label>
         <input type="checkbox" id="home" />
-        <input type='numberif' step='0.01' id="home_bal" placeholder="Outstanding balance"><br><br>
+        <input type='numberif' step='0.01' id="home_bal" placeholder="Outstanding balance"><br><br> -->
         
         <button type="submit" id="saveAssets">Save</button>
       </form>
@@ -147,7 +147,7 @@
             <td>HOA</td><td><input type='number' value=0 id='hoa'></td>
           </tr>
           <tr>
-            <td>Property Taxes [$/y]</td><td><input type='number' value=0 id='property_taxes'></td>
+            <td>Property Taxes [$/m]</td><td><input type='number' value=0 id='property_taxes'></td>
           </tr>
           <tr>
             <td>Home / Renters Insurance</td><td><input type='number'id='home_insurance'></td>
