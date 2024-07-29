@@ -10,13 +10,13 @@ for (var i = 0; i < coll.length; i++) {
       content.style.maxHeight = null;
     } else {
       // close all collapsible
-      var col_content = document.getElementsByClassName("content");
-      for (var j = 0; j < col_content.length; j++) {
-        col_content[j].style.maxHeight = null;
-      }
+      // var col_content = document.getElementsByClassName("content");
+      // for (var j = 0; j < col_content.length; j++) {
+      //   col_content[j].style.maxHeight = null;
+      // }
 
       // open this one
-      content.style.maxHeight =  content.scrollHeight + "50px"; // "100%"
+      content.style.maxHeight =  content.scrollHeight + "100px"; // "100%"
     }
   });
 }
@@ -26,8 +26,19 @@ function handleAddCCDebt(event) {
 
   var table = document.getElementById("ccDebtTable");
 
+  var nickname = document.getElementById('cellOne').value;
+  var interest_rate = document.getElementById('cellTwo').value;
   var balance = document.getElementById('cellThree').value;
   var min_mo_pay = document.getElementById('cellFour').value;
+
+  if (nickname === "" || interest_rate === "" || balance === "" || min_mo_pay === "") {
+    console.log("Some fields are missing");
+    document.getElementById('cellOne').placeholder = "required";
+    document.getElementById('cellTwo').placeholder = "required";
+    document.getElementById('cellThree').placeholder = "required";
+    document.getElementById('cellFour').placeholder = "required";
+    return;
+  }
   
   if (min_mo_pay > 0.05*balance) {
     var err_msg = "Your monthly payment seems oddly high. Did you miss a payment recently?";
@@ -35,8 +46,6 @@ function handleAddCCDebt(event) {
     overlayOn(err_msg);
     return;
   }
-
-  var interest_rate = document.getElementById('cellTwo').value;
 
   if (interest_rate > 50) {
     var err_msg = "Bro... You took out a Payday Loan?";
@@ -50,24 +59,25 @@ function handleAddCCDebt(event) {
   var cell3 = row.insertCell(2);
   var cell4 = row.insertCell(3);
 
-  cell1.textContent = document.getElementById('cellOne').value;
+  cell1.textContent = nickname;
   cell2.innerHTML = interest_rate;
   cell3.innerHTML = balance;
   cell4.innerHTML = min_mo_pay;
 
   min_mo_debt = min_mo_debt + parseFloat(min_mo_pay);
+  total_debt = total_debt + balance;
   document.getElementById('addCCDebt').reset();
 }
 
 document.querySelector("#addCCButton").addEventListener("click", handleAddCCDebt);
 
-function overlayOn(text_msg) {
+export function overlayOn(text_msg) {
   document.getElementById("overlaytext").textContent = text_msg;
   document.getElementById("overlay").style.display = "block";
   document.querySelector("#killPopup").addEventListener("click", overlayOff);
 }
 
-function overlayOff() {
+export function overlayOff() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("overlaytext").textContent = DEFAULT_OVERLAY_TEXT;
 }
