@@ -69,3 +69,18 @@
   font-size: 12px;
   font-weight: bold;
 }
+
+.template, .hidden {
+  display: none;
+}
+
+#evalResults {
+  margin: 0 auto;
+  display: block;
+	color: white;
+	background: #ccc;
+	border: none;
+	padding: 10;
+  width: 100%;
+  cursor: pointer;
+}
