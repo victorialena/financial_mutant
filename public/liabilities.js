@@ -1,3 +1,5 @@
+import { overlayOn } from "./collapsible.js"
+
 
 function handleAddCCDebt(event) {
   event.preventDefault()
@@ -5,11 +7,11 @@ function handleAddCCDebt(event) {
   var table = document.getElementById("ccDebtTable");
 
   var nickname = document.getElementById('cellOne').value;
-  var interest_rate = document.getElementById('cellTwo').value;
-  var balance = document.getElementById('cellThree').value;
-  var min_mo_pay = document.getElementById('cellFour').value;
+  var interest_rate = parseFloat(document.getElementById('cellTwo').value);
+  var balance = parseFloat(document.getElementById('cellThree').value);
+  var min_mo_pay = parseFloat(document.getElementById('cellFour').value);
 
-  if (nickname === "" || interest_rate === "" || balance === "" || min_mo_pay === "") {
+  if ((nickname === "") || isNaN(interest_rate) || isNaN(balance) || isNaN(min_mo_pay)) {
     console.log("Some fields are missing");
     document.getElementById('cellOne').placeholder = "required";
     document.getElementById('cellTwo').placeholder = "required";
@@ -42,9 +44,11 @@ function handleAddCCDebt(event) {
   cell3.innerHTML = balance;
   cell4.innerHTML = min_mo_pay;
 
-  min_mo_debt = min_mo_debt + parseFloat(min_mo_pay);
+  min_mo_debt = min_mo_debt + min_mo_pay;
   total_debt = total_debt + balance;
   document.getElementById('addCCDebt').reset();
+
+  debts.push(new Debt(nickname, interest_rate, balance, min_mo_pay));
 }
 
 document.querySelector("#addCCButton").addEventListener("click", handleAddCCDebt);

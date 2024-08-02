@@ -26,16 +26,16 @@ function readBudgetTable() {
   var budget = document.getElementById("budget");
   var inputs = budget.getElementsByTagName("input");
 
-  var total_spending = 0;
+  expenses = 0;
 
   for (let ui = 0; ui < inputs.length; ui++) {
     if (inputs[ui].value !== "") {
       chart_data.push([inputs[ui].id, parseFloat(inputs[ui].value)]);
-      total_spending = total_spending + parseFloat(inputs[ui].value);
+      expenses = expenses + parseFloat(inputs[ui].value);
     }
   }
 
-  var remaining = income - total_spending;
+  var remaining = income - expenses;
   document.getElementById("budget_remainder").innerHTML = `$${remaining}`;
 
   if (remaining > 0) {

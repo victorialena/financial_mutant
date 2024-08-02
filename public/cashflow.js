@@ -1,9 +1,3 @@
-// import updateBudget from "circle_chart.js";
-
-var income = 0;
-var min_mo_debt = 0;
-var total_debt = 0;
-
 function calcIncome(event) {
   event.preventDefault();
 

@@ -21,7 +21,8 @@ function logAssets(event) {
   var roth_bal = parseFloat(document.getElementById('401k_bal').value) * document.getElementById('401k').checked;
   var brokerage_bal = parseFloat(document.getElementById('brokerage_bal').value) * document.getElementById('brokerage').checked;
 
-  net_worth = checking + savings + roth_bal + brokerage_bal - total_debt;
+  assets = new Assets(checking, savings, roth_bal, brokerage_bal);
+  net_worth = assets.sum - total_debt;
 
   var err_msg = `Your net worth is ${net_worth}`;
   console.log("popup: " + err_msg);
