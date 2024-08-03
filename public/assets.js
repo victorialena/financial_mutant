@@ -24,7 +24,7 @@ function logAssets(event) {
   assets = new Assets(checking, savings, roth_bal, brokerage_bal);
   net_worth = assets.sum - total_debt;
 
-  var err_msg = `Your net worth is ${net_worth}`;
+  var err_msg = `Your net worth is $${net_worth}!`;
   console.log("popup: " + err_msg);
   overlayOn(err_msg);
 }

@@ -19,7 +19,9 @@
     <script type="module" src="results.js"></script>
   </head>
   <body>
+    
     <form onkeypress="return event.keyCode != 13"></form>
+
     <header>
       <h1>Financial Mutant</h1>
     </header>
@@ -126,7 +128,7 @@
       
       <div style="width: 100%; height: 20px;"></div>
 
-      <form id="income_form">
+      <form id="income_form" onkeypress="return event.keyCode != 13">
         <label>Household Income:</label>
         <select name="income_flag" id="income_flag">
           <option value="yearly">yearly</option>
@@ -140,7 +142,7 @@
         <p id="incomeprompt"> Your montly income amounts to $0!</p>
       </form>
 
-      <div id="budgetwrapper"> 
+      <div id="budgetwrapper" onkeypress="return event.keyCode != 13"> 
 
         <table id="budget">
           <tr>

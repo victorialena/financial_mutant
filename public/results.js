@@ -15,7 +15,7 @@ function createTODO(title, description) {
 
   element.className = TIMELINE_ELEMENT;
   element.id = TIMELINE_ELEMENT;
-  
+
   element.querySelector(".timeline-badge").textContent = title;
   element.querySelector(".timeline-description").textContent = description;
 
@@ -97,7 +97,7 @@ function evalResults(event) {
     const months = Math.ceil(current_balance/remainder);
     current_balance = current_balance - months*remainder;
 
-    createTODO(`Pay off Debt`, `You need ${months} month(s) to pay off ${debt.id}.`);
+    createTODO(`Pay off Debt`, `You need ${months} month(s) to pay off ${debt.id}, by contributing $${remainder} each month.`);
     remainder = remainder + debt.minimum_monthly;
 
     if (d+1 < debts.length) {
