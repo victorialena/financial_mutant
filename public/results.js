@@ -34,7 +34,7 @@ function clearTimeline() {
 function evalResults(event) {
   event.preventDefault();
 
-  // clearTimeline();
+  clearTimeline();
 
   var cash = assets.cash;
   var remainder = income - expenses;
@@ -54,7 +54,9 @@ function evalResults(event) {
   // 1. Calculate 1 mo emergency fund.
   var emergency_fund = calcEmergencyFund(1);
   if (cash < emergency_fund) {
-    createTODO(`Emergency Fund`, `save 1 mo. worth of expenses (i.e., $${emergency_fund})`);
+    createTODO(`Emergency Fund`, `Save 1 mo. worth of expenses, i.e., save an additional $${emergency_fund-cash} \
+                                  and put $${emergency_fund} in your savings account.`);
+    cash = 0;
   } else {
     cash = cash - emergency_fund;
   }
@@ -62,60 +64,62 @@ function evalResults(event) {
   // 2. Sort debts from worst to least interest rate, and using savings to pay off as much as possible!
   debts.sort(function(first, second) { return second.interest_rate - first.interest_rate; });
   var d = 0;
-  var current_balance = 0;
-  for (d=0; d<debts.length; d++) {
+  var current_balance = (0 < debts.length) ? debts[0].balance : 0;
+
+  for (d=0; (d<debts.length) && (cash > 0); d++) {
     let debt = debts[d];
-    if (debt.interest_rate < CUTTOFF_INTEREST) {
+    if ((debt.interest_rate < CUTTOFF_INTEREST) || (cash <= 0)) {
       break;
     }
 
-    if (cash > debt.balance) {
+    current_balance = debt.balance;
+    if (cash > current_balance) {
       createTODO(`Pay off Debt`, `Use your savings to pay off ${debt.id} in full!`);
-      cash = cash - debt.balance;
+      cash = cash - current_balance;
       remainder = remainder + debt.minimum_monthly;
     } else {
       createTODO(`Pay off Debt`, `Use your savings to pay $${cash} off ${debt.id}.`);
+      current_balance = current_balance - cash;
       cash = 0;
-      current_balance = debt.balance - cash;
-
       break;
     }
   }
 
   // 3. Distribute monthly remainder post budget to pay off bad debts are fast as possible.
-  // while (true) {
-  //   let debt = debts[d];
-  //   if (debt.interest_rate < CUTTOFF_INTEREST) {
-  //     break;
-  //   }
+  while (d < debts.length) {
+    let debt = debts[d];
+    if (debt.interest_rate < CUTTOFF_INTEREST) {
+      break;
+    }
 
-  //   const months = Math.ceil(current_balance/remainder);
-  //   current_balance = current_balance - months*remainder;
+    const months = Math.ceil(current_balance/remainder);
+    current_balance = current_balance - months*remainder;
 
-  //   createTODO(`Pay off Debt`, `You need ${months} month(s) to pay off ${debt.id}.`);
-  //   remainder = remainder + debt.minimum_monthly;
+    createTODO(`Pay off Debt`, `You need ${months} month(s) to pay off ${debt.id}.`);
+    remainder = remainder + debt.minimum_monthly;
 
-  //   if (d+1 < debts.length) {
-  //     d = d + 1;
-  //     current_balance = current_balance + debts[d].balance;
-  //   }
-  // }
+    if (d+1 < debts.length) {
+      current_balance = current_balance + debts[d+1].balance;
+    } 
+    d = d + 1;
+  }
 
   // 3. b. Clarify that the remaning open debts are below the set threshold and can be
   // paid off w/ minimum monthly's.
-  // if (d < debts.length) {
-  //   createTODO(`Done w/ BAD debt!`, `All your remeining debts are below ${CUTTOFF_INTEREST}% interest.\
-  //              We recommend just paying the minimum monthly until they are done.`);
-  // }
+  if (d < debts.length) {
+    createTODO(`Done w/ BAD debt!`, `All your remeining debts are below ${CUTTOFF_INTEREST}% interest.\
+               We recommend just paying the minimum monthly until they are done.`);
+  }
 
   // 4. Stock up Emergency Fund
-  // emergency_fund = calcEmergencyFund(6);
-  // if (cash < emergency_fund) {
-  //   createTODO(`Emergency Fund`, `Save 6 mo. worth of expenses (i.e., $${emergency_fund})`);
-  // } else {
-  //   cash = cash - emergency_fund;
-  //   createTODO(`Emergency Fund`, `Move 6 mo. worth of expenses (i.e., $${emergency_fund}) into your savings account, the rest remains in checking.`);
-  // }
+  emergency_fund = calcEmergencyFund(6);
+  if (cash < emergency_fund) {
+    createTODO(`Emergency Fund`, `Save 6 mo. worth of expenses (i.e., $${emergency_fund})`);
+  } else {
+    cash = cash - emergency_fund;
+    createTODO(`Emergency Fund`, `Move 6 mo. worth of expenses (i.e., $${emergency_fund}) into your savings \
+                                  account, the rest remains in checking.`);
+  }
 
 }
 

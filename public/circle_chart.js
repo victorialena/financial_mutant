@@ -35,6 +35,7 @@ function readBudgetTable() {
     }
   }
 
+  expenses = expenses.toFixed(2);
   var remaining = income - expenses;
   document.getElementById("budget_remainder").innerHTML = `$${remaining}`;
 
