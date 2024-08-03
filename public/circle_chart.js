@@ -37,7 +37,7 @@ function readBudgetTable() {
 
   expenses = expenses.toFixed(2);
   var remaining = income - expenses;
-  document.getElementById("budget_remainder").innerHTML = `$${remaining}`;
+  document.getElementById("budget_remainder").innerHTML = `$${remaining.toFixed(2)}`;
 
   if (remaining > 0) {
     chart_data.push(["remaining", remaining]);

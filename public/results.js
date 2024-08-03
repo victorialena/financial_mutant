@@ -14,7 +14,8 @@ function createTODO(title, description) {
   var element = template.cloneNode(true);
 
   element.className = TIMELINE_ELEMENT;
-  // element.querySelector("#timeline_icon_src").src = "icons/credit-card.svg";
+  element.id = TIMELINE_ELEMENT;
+  
   element.querySelector(".timeline-badge").textContent = title;
   element.querySelector(".timeline-description").textContent = description;
 
@@ -25,8 +26,9 @@ function createTODO(title, description) {
 
 function clearTimeline() {
   console.log("clearing timeline");
-  for (var elem of document.getElementsByClassName(TIMELINE_ELEMENT)) {
-    elem.classList.remove(TIMELINE_ELEMENT);
+  let ellist =  document.getElementsByClassName(TIMELINE_ELEMENT);
+  while (ellist.length > 0) {
+    ellist[0].remove();
   }
 }
 
