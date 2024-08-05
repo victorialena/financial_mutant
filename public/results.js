@@ -97,7 +97,7 @@ function evalResults(event) {
     const months = Math.ceil(current_balance/remainder);
     current_balance = current_balance - months*remainder;
 
-    createTODO(`Pay off Debt`, `You need ${months} month(s) to pay off ${debt.id}, by contributing $${remainder} each month.`);
+    createTODO(`Pay off Debt`, `You need ${months} month(s) to pay off ${debt.id}, by contributing $${remainder.toFixed(2)} each month.`);
     remainder = remainder + debt.minimum_monthly;
 
     if (d+1 < debts.length) {
