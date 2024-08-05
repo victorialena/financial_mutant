@@ -1,3 +1,6 @@
+#timeline_collapsible {
+  background-color: #ccc;
+}
 
 .timeline_wrapper {
   background-color: #ccc;
@@ -74,13 +77,30 @@
   display: none;
 }
 
+#resultButtons {
+  display: inline-flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* margin: auto; */
+  /* left: calc(50vw - 100px); */
+  margin-left: calc(50% - 7rem);
+}
+
 #evalResults {
   margin: 0 auto;
-  display: block;
 	color: white;
 	background: #ccc;
 	border: none;
-	padding: 10;
-  width: 100%;
+  width: 12rem;
+  cursor: pointer;
+  border-color: white;
+  border-style: solid;
+}
+
+#printResults {
+  margin: 0 auto;
+	background: none;
+	border: none;
+  width: 2rem;
   cursor: pointer;
 }

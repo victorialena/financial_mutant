@@ -208,7 +208,10 @@
 
       <form onkeypress="return event.keyCode != 13"></form>
 
-      <button type="button" id="evalResults">Generate Game Plan</button>
+      <div id="resultButtons">
+        <button type="button" id="evalResults">Generate Game Plan</button>
+        <button type="button" id="printResults" onclick="window.print();"><img src="icons/printer.svg" alt="Print"></button>
+      </div>
 
       <div class="timeline_wrapper">
         <div class="timeline">
@@ -233,4 +236,18 @@
     </div>
 
   </body>
+
+  <div class="disclaimer">
+    <p>
+      Disclaimer. The information provided on this website is for informational and educational purposes only and should not 
+      be considered financial advice. While every effort has been made to ensure the accuracy and completeness of the content, 
+      we make no guarantee regarding the results obtained from using the information provided. We are not responsible for any
+      losses or damages arising from the use of this information. Use this site at your own discretion.
+    </p>
+  </div>
+  <footer>
+    <p>© 2024 Victoria Magdalena. All rights reserved.</p>
+    <p><a href="mailto:thefinancialmutants@gmail.com">thefinancialmutants@gmail.com</a></p>
+  </footer>
+
 </html>

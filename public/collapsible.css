@@ -134,3 +134,12 @@ input[type=checkbox]:checked + input[type=numberif], input[type=checkbox]:checke
 input { 
   text-align: center; 
 }
+
+@media print {
+   * {
+      display: none;
+   }
+   .timeline_wrapper {
+      display: block;
+   }
+}
