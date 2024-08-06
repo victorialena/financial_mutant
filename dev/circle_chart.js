@@ -1,3 +1,5 @@
+import { overlayOn } from './collapsible.js';
+
 var default_table = [['Category', 'Budget'], ['Remaining', Math.random()]];
 
 google.charts.load('current', {'packages':['corechart']});
@@ -42,6 +44,10 @@ function readBudgetTable() {
   if (remaining > 0) {
     chart_data.push(["remaining", remaining]);
   }
+
+  var err_msg = `Your montly leftover is $${remaining.toFixed(2)}!`;
+  console.log("popup: " + err_msg);
+  overlayOn(err_msg);
 
   return chart_data;
 }
