@@ -1,7 +1,8 @@
 import { overlayOn } from "./collapsible.js"
 
 const CUTTOFF_INTEREST = 5.0;
-const TIMELINE_ELEMENT = "timeline-container"; 
+const TIMELINE_ELEMENT = "timeline-container";
+var total_time = 0;
 
 
 function calcEmergencyFund(months=6) {
@@ -37,6 +38,7 @@ function evalResults(event) {
   event.preventDefault();
 
   clearTimeline();
+  total_time = 0;
 
   var cash = assets.cash;
   var remainder = income - expenses;
@@ -56,7 +58,9 @@ function evalResults(event) {
   // 1. Calculate 1 mo emergency fund.
   var emergency_fund = calcEmergencyFund(1);
   if (cash < emergency_fund) {
-    createTODO(`Emergency Fund`, `Save 1 mo. worth of expenses, i.e., save an additional $${emergency_fund-cash} \
+    const months = Math.ceil((emergency_fund-cash)/remainder);
+    total_time = total_time + months;
+    createTODO(`Emergency Fund`, `[${months} mo.] Save 1 mo. worth of expenses, i.e., save an additional $${emergency_fund-cash} \
                                   and put $${emergency_fund} in your savings account.`);
     cash = 0;
   } else {
@@ -95,9 +99,10 @@ function evalResults(event) {
     }
 
     const months = Math.ceil(current_balance/remainder);
+    total_time = total_time + months;
     current_balance = current_balance - months*remainder;
 
-    createTODO(`Pay off Debt`, `You need ${months} month(s) to pay off ${debt.id}, by contributing $${remainder.toFixed(2)} each month.`);
+    createTODO(`Pay off Debt`, `[${months} mo.] Pay off ${debt.id} by contributing $${remainder.toFixed(2)} each month.`);
     remainder = remainder + debt.minimum_monthly;
 
     if (d+1 < debts.length) {
@@ -116,13 +121,16 @@ function evalResults(event) {
   // 4. Stock up Emergency Fund
   emergency_fund = calcEmergencyFund(6);
   if (cash < emergency_fund) {
-    createTODO(`Emergency Fund`, `Save 6 mo. worth of expenses (i.e., $${emergency_fund})`);
+    const months = Math.ceil((emergency_fund-calcEmergencyFund(1))/remainder);
+    createTODO(`Emergency Fund`, `[${months} mo.] Save 6 mo. worth of expenses (i.e., $${emergency_fund})`);
   } else {
     cash = cash - emergency_fund;
     createTODO(`Emergency Fund`, `Move 6 mo. worth of expenses (i.e., $${emergency_fund}) into your savings \
                                   account, the rest remains in checking.`);
   }
 
+  var err_msg = `Using this method you will be BAD debt free in ${total_time} months.`
+  overlayOn(err_msg);
 }
 
 document.querySelector("#evalResults").addEventListener("click", evalResults);

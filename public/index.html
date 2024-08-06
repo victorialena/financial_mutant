@@ -143,17 +143,19 @@
       </form>
 
       <div id="budgetwrapper" onkeypress="return event.keyCode != 13"> 
-
+        
         <table id="budget">
           <tr>
             <th rowspan="6">Housing</th>
-            <td>Rent / Mortage</td><td><input type='number' id='rent'></td>
+            <td>Rent / Mortage</td><td><input type='number' id='rent' value=1550></td>
           </tr>
           <tr>
-            <td>Internet / WiFi</td><td><input type='number' id='internet'></td>
+            <td>Internet / WiFi</td><td><input type='number' id='internet' value=51></td>
           </tr>
           <tr>
-            <td>Utilities</td><td><input type='number' id='utilities'></td>
+            <td>Utilities
+              <span class="moreinfo"><img src="icons/question-mark.svg" alt="moreinfo"></span><span class="myhoverhide">e.g., water, gas</span>
+            </td><td><input type='number' id='utilities' value=30></td>
           </tr>
           <tr>
             <td>HOA</td><td><input type='number' value=0 id='hoa'></td>
@@ -162,24 +164,34 @@
             <td>Property Taxes [$/m]</td><td><input type='number' value=0 id='property_taxes'></td>
           </tr>
           <tr>
-            <td>Home / Renters Insurance</td><td><input type='number'id='home_insurance'></td>
+            <td>Home / Renters Insurance</td><td><input type='number'id='home_insurance' value=11></td>
           </tr>
           <tr>
-            <th rowspan="3">Living Expenses</th>
+            <th rowspan="5">Living Expenses</th>
             <td>Groceries</td><td><input type='number' value=300 id='groceries'></td>
           </tr>
           <tr>
-            <td>Essentials</td><td><input type='number' value=100 id='essentials'></td>
+            <td>Essentials
+              <span class="moreinfo"><img src="icons/question-mark.svg" alt="moreinfo"></span><span class="myhoverhide">e.g., toiletries, etc...</span>
+            </td><td><input type='number' value=100 id='essentials'></td>
           </tr>
           <tr>
-            <td>Health Insurance</td><td><input type='number' id='heath_insurance'></td>
+            <td>Health 
+              <span class="moreinfo"><img src="icons/question-mark.svg" alt="moreinfo"></span><span class="myhoverhide">e.g., insurance, copay, prescriptions...</span>
+            </td><td><input type='number' id='heath_insurance' value=60></td>
+          </tr>
+          <tr>
+            <td>Phone</td><td><input type='number' id='phone' value=20></td>
+          </tr>
+          <tr>
+            <td>Subscriptions</td><td><input type='number' id='subscriptions' value=0></td>
           </tr>
           <tr>
             <th rowspan="2">Car</th>
-            <td>Gas</td><td><input type='number' id='gas'></td>
+            <td>Gas</td><td><input type='number' id='gas' value=0></td>
           </tr>
           <tr>
-            <td>Car Insurance</td><td><input type='number' id='car_insurance'></td>
+            <td>Car Insurance</td><td><input type='number' id='car_insurance' value=0></td>
           </tr>
           <tr>
             <td colspan="2">Remaining</td><td><p id="budget_remainder"> $0 </td>
@@ -196,6 +208,8 @@
         </div>
 
       </div>
+
+      <div style="width: 100%; height: 40px;"></div>
 
     </div>
 
